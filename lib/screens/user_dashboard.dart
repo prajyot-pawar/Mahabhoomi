@@ -532,7 +532,7 @@ class _UserDashBoardState extends State<UserDashBoard> {
               Expanded(
                   child: Center(
                     child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(primary: Colors.green),
+                        style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                         onPressed: data[4].toString() != '1'
                             ? null
                             : () async {

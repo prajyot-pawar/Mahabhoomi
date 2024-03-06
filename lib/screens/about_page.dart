@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:land_registration/widget/footer.dart';
+import 'package:land_registration/widget/header.dart';
 import 'package:land_registration/widget/header_user.dart';
 
 class AboutPage extends StatelessWidget {
@@ -20,7 +21,7 @@ class AboutPage extends StatelessWidget {
             elevation: 0,
             child: Padding(
               padding: EdgeInsets.all(0),
-              child: HeaderUserWidget(),
+              child: HeaderWidget(),
             ),
           ),
         ),
