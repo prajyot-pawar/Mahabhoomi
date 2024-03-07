@@ -245,7 +245,7 @@ contract Land {
     }
     function propertytax(uint id) public view returns(uint)
     {
-        return lands[id].landPrice*0.20;
+        return lands[id].landPrice*1/5;
     }
     function makePayment(uint _requestId) public payable
     {

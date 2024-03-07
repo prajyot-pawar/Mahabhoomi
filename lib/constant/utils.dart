@@ -91,6 +91,7 @@ Widget CustomButton(text, fun) => Container(
       constraints: const BoxConstraints(maxWidth: 250.0, minHeight: 50.0),
       margin: const EdgeInsets.all(10),
       child: ElevatedButton(
+        style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(CupertinoColors.systemBlue)),
         onPressed: fun,
         child: Padding(
           padding: const EdgeInsets.all(0),

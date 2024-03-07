@@ -57,9 +57,6 @@ class _CheckPrivateKeyState extends State<CheckPrivateKey> {
               ),
             ],
           ),
-          SizedBox(
-            height: 15,
-          ),
           if (widget.val == "UserLogin")
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -92,7 +89,7 @@ class _CheckPrivateKeyState extends State<CheckPrivateKey> {
             ),
           Container(
             //width: 500,
-            padding: EdgeInsets.only(top: 50),
+            height: scrHeight*0.63,
             alignment: Alignment.center,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -197,6 +194,7 @@ class _CheckPrivateKeyState extends State<CheckPrivateKey> {
                                     if (widget.val == "owner") {
                                       bool temp = await model
                                           .isContractOwner(privatekey);
+                                      print("this is temp $temp");
                                       if (temp == false) {
                                         setState(() {
                                           errorMessage =
@@ -302,7 +300,6 @@ class _CheckPrivateKeyState extends State<CheckPrivateKey> {
                                 errorMessage = "You are not authrosied";
                               });
                             } else {
-                              Navigator.pop(context);
                               Navigator.pop(context);
                               Navigator.push(
                                   context,

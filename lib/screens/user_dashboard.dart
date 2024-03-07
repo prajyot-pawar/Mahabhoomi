@@ -348,8 +348,8 @@ class _UserDashBoardState extends State<UserDashBoard> {
       isDesktop = false;
     }
 
-    return Stack(
-      alignment: Alignment.topCenter,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Positioned(
           width: scrWidth,

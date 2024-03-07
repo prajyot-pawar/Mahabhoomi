@@ -67,82 +67,85 @@ class _AddLandInspectorState extends State<AddLandInspector> {
     if (scrWidth < 600) {
       isDesktop = false;
     }
-    return Stack(
-      alignment: Alignment.topCenter,
-      children: [
-        Positioned(
-          width: scrWidth,
-          top: scrHeight * 0.10,
-          height: scrHeight * 0.90,
-          child: Scaffold(
-            backgroundColor: Colors.white,
-            key: _scaffoldKey,
-            // appBar: AppBar(
-            //   centerTitle: false,
-            //   backgroundColor: const Color(0xFF272D34),
-            //   leading: !isDesktop
-            //       ? Container()
-            //       : GestureDetector(
-            //           child: const Padding(
-            //             padding: EdgeInsets.all(8.0),
-            //             child: Icon(
-            //               Icons.menu,
-            //               color: Colors.black,
-            //             ), //AnimatedIcon(icon: AnimatedIcons.menu_arrow,progress: _animationController,),
-            //           ),
-            //           onTap: () {
-            //             _scaffoldKey.currentState!.openDrawer();
-            //           },
-            //         ),
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Positioned(
+            width: scrWidth,
+            top: scrHeight * 0.10,
+            height: scrHeight * 0.90,
+            child: Scaffold(
+              backgroundColor: Colors.white,
+              key: _scaffoldKey,
+              // appBar: AppBar(
+              //   centerTitle: false,
+              //   backgroundColor: const Color(0xFF272D34),
+              //   leading: !isDesktop
+              //       ? Container()
+              //       : GestureDetector(
+              //           child: const Padding(
+              //             padding: EdgeInsets.all(8.0),
+              //             child: Icon(
+              //               Icons.menu,
+              //               color: Colors.black,
+              //             ), //AnimatedIcon(icon: AnimatedIcons.menu_arrow,progress: _animationController,),
+              //           ),
+              //           onTap: () {
+              //             _scaffoldKey.currentState!.openDrawer();
+              //           },
+              //         ),
 
-            // ),
-            drawer: drawer2(),
-            drawerScrimColor: Colors.transparent,
-            body: Row(
-              children: [
-                isDesktop ? drawer2() : Container(),
-                if (screen == 0)
-                  addLandInspector()
-                else if (screen == 1)
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.all(25),
-                      child: landInspectorList(),
-                    ),
-                  )
-                else if (screen == 2)
-                  changeContractOwner()
-              ],
+              // ),
+              drawer: drawer2(),
+              drawerScrimColor: Colors.transparent,
+              body: Row(
+                children: [
+                  isDesktop ? drawer2() : Container(),
+                  if (screen == 0)
+                    addLandInspector()
+                  else if (screen == 1)
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.all(25),
+                        child: landInspectorList(),
+                      ),
+                    )
+                  else if (screen == 2)
+                    changeContractOwner()
+                ],
+              ),
             ),
           ),
-        ),
-        Positioned(
-          height: scrHeight * 0.10,
-          width: scrWidth,
-          child: Material(
-            elevation: 10,
+          Positioned(
+            height: scrHeight * 0.10,
+            width: scrWidth,
+            child: Material(
+              elevation: 10,
+              child: Padding(
+                padding: EdgeInsets.all(0),
+                child: HeaderUserWidget(),
+              ),
+            ),
+          ),
+          Positioned(
+            left: 0,
+            width: scrWidth * 0.2,
+            bottom: 0,
             child: Padding(
-              padding: EdgeInsets.all(0),
-              child: HeaderUserWidget(),
-            ),
-          ),
-        ),
-        Positioned(
-          left: 0,
-          width: scrWidth * 0.2,
-          bottom: 0,
-          child: Padding(
-              padding: EdgeInsets.all(0),
-              child: (Image.asset(
-                'assets/background_image.png',
-                width: scrWidth * 0.3,
-                fit: BoxFit.scaleDown,
-                color: Color.fromRGBO(255, 255, 255, 0.4),
-                colorBlendMode: BlendMode.modulate,
-                alignment: Alignment.bottomLeft,
-              ))),
-        )
-      ],
+                padding: EdgeInsets.all(0),
+                child: (Image.asset(
+                  'assets/background_image.png',
+                  width: scrWidth * 0.3,
+                  fit: BoxFit.scaleDown,
+                  color: Color.fromRGBO(255, 255, 255, 0.4),
+                  colorBlendMode: BlendMode.modulate,
+                  alignment: Alignment.bottomLeft,
+                ))),
+          )
+        ],
+      ),
     );
   }
 
@@ -387,28 +390,26 @@ class _AddLandInspectorState extends State<AddLandInspector> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Address: ', style: TextStyle(fontSize: 18)),
-                      Flexible(
-                        child: Container(
-                          width: isDesktop ? 375 : scrWidth * 0.8,
-                        
-                          child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter some text';
-                                }
-                                return null;
-                              },
-                              onChanged: (val) {
-                                address = val;
-                              },
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Address',
-                                hintText:
-                                    'Enter Land Inspector Address(0xc5aEabE793B923981fc401bb8da620FDAa45ea2B)',
-                              ),
+                      Container(
+                        width: isDesktop ? 375 : scrWidth * 0.8,
+
+                        child: Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter some text';
+                              }
+                              return null;
+                            },
+                            onChanged: (val) {
+                              address = val;
+                            },
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Address',
+                              hintText:
+                                  'Enter Land Inspector Address(0xc5aEabE793B923981fc401bb8da620FDAa45ea2B)',
                             ),
                           ),
                         ),
@@ -422,28 +423,26 @@ class _AddLandInspectorState extends State<AddLandInspector> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Name:', style: TextStyle(fontSize: 18)),
-                      Flexible(
-                        child: Container(
-                          width: isDesktop ? 375 : scrWidth * 0.8,
-                        
-                          child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter some text';
-                                }
-                                return null;
-                              },
-                              onChanged: (val) {
-                                name = val;
-                              },
-                              //obscureText: true,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Name',
-                                hintText: 'Enter Name',
-                              ),
+                      Container(
+                        width: isDesktop ? 375 : scrWidth * 0.8,
+
+                        child: Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter some text';
+                              }
+                              return null;
+                            },
+                            onChanged: (val) {
+                              name = val;
+                            },
+                            //obscureText: true,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Name',
+                              hintText: 'Enter Name',
                             ),
                           ),
                         ),
@@ -457,28 +456,26 @@ class _AddLandInspectorState extends State<AddLandInspector> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Age:', style: TextStyle(fontSize: 18)),
-                      Flexible(
-                        child: Container(
-                          width: isDesktop ? 375 : scrWidth * 0.8,
-                        
-                          child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter some text';
-                                }
-                                return null;
-                              },
-                              onChanged: (val) {
-                                age = val;
-                              },
-                              //obscureText: true,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Age',
-                                hintText: 'Enter Age',
-                              ),
+                      Container(
+                        width: isDesktop ? 375 : scrWidth * 0.8,
+
+                        child: Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter some text';
+                              }
+                              return null;
+                            },
+                            onChanged: (val) {
+                              age = val;
+                            },
+                            //obscureText: true,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Age',
+                              hintText: 'Enter Age',
                             ),
                           ),
                         ),
@@ -492,28 +489,26 @@ class _AddLandInspectorState extends State<AddLandInspector> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Designation:', style: TextStyle(fontSize: 18)),
-                      Flexible(
-                        child: Container(
-                          width: isDesktop ? 375 : scrWidth * 0.8,
-                        
-                          child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter some text';
-                                }
-                                return null;
-                              },
-                              onChanged: (val) {
-                                desig = val;
-                              },
-                              //obscureText: true,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Designation',
-                                hintText: 'Enter Designation',
-                              ),
+                      Container(
+                        width: isDesktop ? 375 : scrWidth * 0.8,
+
+                        child: Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter some text';
+                              }
+                              return null;
+                            },
+                            onChanged: (val) {
+                              desig = val;
+                            },
+                            //obscureText: true,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Designation',
+                              hintText: 'Enter Designation',
                             ),
                           ),
                         ),

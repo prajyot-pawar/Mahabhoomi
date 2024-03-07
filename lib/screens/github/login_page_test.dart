@@ -59,8 +59,8 @@ class _my_login_pageState extends State<my_login_page> {
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.center,
         children: [
-
-          Stack(
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Material(
                 elevation: 10,
